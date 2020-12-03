@@ -9,23 +9,20 @@ class ProductionTest {
 
     @Test
     void caseListOfNumber1To100() {
-        Assertions.assertEquals(IntStream.range(0, 100).boxed().map(e -> {
-                    if (e == 3) {
-                        return "Fizz";
-                    }
-                    return e.toString();
-                }).collect(Collectors.toList()),
+        Assertions.assertEquals(IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList()),
                 result());
     }
 
     private List<String> result() {
-        List<String> result = IntStream.range(0, 100).boxed().map(e -> {
-            if (e == 3) {
-                return "Fizz";
-            }
-            return e.toString();
-        }).collect(Collectors.toList());
+        List<String> result = IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList());
         return result;
+    }
+
+    private String applyFizzBuzzLogic(Integer e) {
+        if (e == 3) {
+            return "Fizz";
+        }
+        return e.toString();
     }
 
     @Test
