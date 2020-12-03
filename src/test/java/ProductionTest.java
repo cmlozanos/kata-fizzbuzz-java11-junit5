@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 class ProductionTest {
 
     @Test
-    void caseListOfNumber1To100() {
+    void caseListOfString1To100WithFizzAsModuleThreeNumbers() {
         Assertions.assertEquals(IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList()),
                 result());
     }
