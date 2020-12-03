@@ -36,8 +36,9 @@ class ProductionTest {
         Assertions.assertEquals("Fizz", result().get(moduleThreeNumber - 1));
     }
 
-    @Test
-    void caseModuleFiveNumberIsBuzz(){
-        Assertions.assertEquals("Buzz", result().get(4));
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 20, 25, 35, 40})
+    void caseModuleFiveNumberIsBuzz(int moduleFiveNumber){
+        Assertions.assertEquals("Buzz", result().get(moduleFiveNumber - 1));
     }
 }
