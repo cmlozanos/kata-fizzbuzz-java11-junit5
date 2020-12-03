@@ -16,9 +16,7 @@ class ProductionTest {
     }
 
     private List<String> result() {
-        List<String> result =
-                IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList());
-        return result;
+        return IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList());
     }
 
     private String applyFizzBuzzLogic(Integer e) {
