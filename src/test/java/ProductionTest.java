@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,19 +16,21 @@ class ProductionTest {
     }
 
     private List<String> result() {
-        List<String> result = IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList());
+        List<String> result =
+                IntStream.range(0, 100).boxed().map(this::applyFizzBuzzLogic).collect(Collectors.toList());
         return result;
     }
 
     private String applyFizzBuzzLogic(Integer e) {
-        if (e == 3) {
+        if (e % 3 == 0) {
             return "Fizz";
         }
         return e.toString();
     }
 
-    @Test
-    void caseThreeNumberIsFizz() {
-        Assertions.assertEquals("Fizz", result().get(3));
+    @ParameterizedTest
+    @ValueSource(ints = {3, 6, 9, 12, 18, 21})
+    void caseModuleThreeNumberIsFizz(int moduleThreeNumber) {
+        Assertions.assertEquals("Fizz", result().get(moduleThreeNumber));
     }
 }
